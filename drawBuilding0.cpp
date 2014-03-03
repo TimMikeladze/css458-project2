@@ -4,7 +4,7 @@
 
 void drawBuilding0(int closeUp) {
        // the Harmon
-   
+
    float yellowMat[] = { .75, .75, 0};
    glMaterialfv(GL_FRONT, GL_DIFFUSE, yellowMat);
    glMaterialfv(GL_FRONT, GL_AMBIENT, yellowMat);

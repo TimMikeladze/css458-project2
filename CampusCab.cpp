@@ -125,7 +125,8 @@ void display(void)
        drawMap();
    }
 
-   drawBuilding0(closeUp);
+   //drawBuilding0(closeUp);
+   drawBuilding20(closeUp);
 
    glFlush ();
 

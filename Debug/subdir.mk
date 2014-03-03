@@ -6,16 +6,19 @@
 CPP_SRCS += \
 ../CampusCab.cpp \
 ../drawBuilding0.cpp \
+../drawBuilding20.cpp \
 ../textureFileReader.cpp 
 
 OBJS += \
 ./CampusCab.o \
 ./drawBuilding0.o \
+./drawBuilding20.o \
 ./textureFileReader.o 
 
 CPP_DEPS += \
 ./CampusCab.d \
 ./drawBuilding0.d \
+./drawBuilding20.d \
 ./textureFileReader.d 
 
 
