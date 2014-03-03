@@ -1,4 +1,6 @@
 /**
+ * Staircase of JOY
+ *
  * @author Tim Mikeladze
  */
 
@@ -353,7 +355,7 @@ void drawStairCase20() {
 }
 
 /**
- * Draws the silver staircase of JOY
+ * Draws the staircase of JOY
  */
 void drawBuilding20(int closeUp) {
 
