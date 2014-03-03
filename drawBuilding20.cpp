@@ -15,11 +15,7 @@ void drawWireFrame20() {
 	glPushMatrix();
 
 	glScalef(2, 3, 1);
-
-	glLineWidth(6.0);
-
 	glutWireCube(1);
-
 	glPopMatrix();
 }
 

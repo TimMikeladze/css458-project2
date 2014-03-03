@@ -109,7 +109,7 @@ void display(void)
 {
    int i;
    int r;
-   int closeUp = 0;
+   int closeUp = 1;
    glClear (GL_COLOR_BUFFER_BIT);
    glClear(GL_DEPTH_BUFFER_BIT);
 
