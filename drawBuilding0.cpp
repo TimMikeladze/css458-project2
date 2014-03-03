@@ -12,7 +12,7 @@ void drawBuilding0(int closeUp) {
    if (closeUp) {
        glScalef(6,6,6);
    } else {
-       glTranslatef(-8.5,1,3);
+       glTranslatef(-8.5,1,6);
    }
 
    glutSolidCube(2);
