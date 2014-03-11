@@ -19,7 +19,9 @@ float frustumXY = 0.167;
 float frustumNear = 0.25;
 
 float  eyeX = 0, eyeY = 0.25, eyeZ = 5,
-       atX = 0, atY = 0.25, atZ = 0;
+       atX = 20, atY = 0.25, atZ = 0;
+
+//float eyeX = 12.3109, eyeY = 0.25, eyeZ = 3.61046 , atX = -8.27746, atY =  0.25, atZ = 2.54457;
 
 int perspective = 1;
       
@@ -129,13 +131,29 @@ void display(void)
    glLoadIdentity ();             /* clear the matrix */
            /* viewing transformation  */
    gluLookAt (eyeX, eyeY, eyeZ, 
-              atX, atY, atZ, 
+              atX, atY, atZ,
               0.0, 1.0, 0.0);
+
+   std::cout << eyeX;
+   std::cout << " ";
+   std::cout << eyeY;
+   std::cout << " ";
+   std::cout << eyeZ;
+   std::cout << " ";
+   std::cout << atX;
+   std::cout << " ";
+   std::cout << atY;
+   std::cout << " ";
+   std::cout << atZ;
+
+   std::cout << "\n\n";
+
 
    if (!closeUp) {
        drawMap();
    }
    
+
    glPushMatrix();
    drawBuilding0(closeUp);
    glPopMatrix();
@@ -212,6 +230,7 @@ void display(void)
    drawBuilding19(closeUp);
    glPopMatrix();
 
+
    glPushMatrix();
    drawBuilding20(closeUp);
    glPopMatrix();
@@ -251,7 +270,7 @@ void display(void)
    glPushMatrix();
    drawBuilding30(closeUp);
    glPopMatrix();
-   
+
    glutSwapBuffers();
 
 }

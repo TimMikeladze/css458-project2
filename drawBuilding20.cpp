@@ -354,6 +354,21 @@ void drawStairCase20() {
 
 }
 
+void drawBricks() {
+	float color[] = { .58, .27, .06 };
+	glMaterialfv(GL_FRONT, GL_DIFFUSE, color);
+	glMaterialfv(GL_FRONT, GL_AMBIENT, color);
+
+	glPushMatrix();
+
+	glTranslatef(0, -0.1, -1.125);
+	glScalef(1.3, 1.4, .6f);
+	glRotatef(180, 0, 1, 0);
+	glutSolidCube(2);
+
+	glPopMatrix();
+}
+
 /**
  * Draws the staircase of JOY
  */
@@ -362,9 +377,10 @@ void drawBuilding20(int closeUp) {
 	if (closeUp) {
 		glScalef(6, 6, 6);
 	} else {
-		glTranslatef(9.3, 1, 7.2);
-		glRotatef(140, 0, 1, 0);
-		glScalef(.75f, .5f, 1);
+		//glRotatef(140, 0, 1, 0);
+		glScalef(.3f, .35f, .6f);
+		glTranslatef(33.1, 1.6, 5.5);
+		glRotatef(180, 0, 1, 0);
 	}
 
 	drawBottom20();
@@ -376,5 +392,6 @@ void drawBuilding20(int closeUp) {
 	drawWindowRight20();
 	drawWindowLeft20();
 	drawWireFrame20();
+	drawBricks();
 
 }
