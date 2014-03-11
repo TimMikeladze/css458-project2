@@ -258,7 +258,7 @@ void drawWindowLeft20() {
 
 	glPopMatrix();
 
-	glPopMatrix();
+	//glPopMatrix();  // extra!!?
 
 	float frameColor[] = { 0.75, 0.75, 0.75 };
 
