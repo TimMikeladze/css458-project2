@@ -29,7 +29,6 @@ void drawBuilding3(int closeUp) {
 		//printf("CloseUp 1");
 		//glTranslatef(-1.75,0,-.15);
 
-		printf("CloseUp 1");
 		glTranslatef(-1.9,0,-.25);
 		glScaled(.1,.3,.1);
 		//glScaled(1,1,1);

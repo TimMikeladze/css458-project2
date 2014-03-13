@@ -60,7 +60,6 @@ quad(int a, int b, int c, int d)
 	vec4 v1 = vertices[b] - vertices[a];
 	vec4 v2 = vertices[c] - vertices[a];
 	vec4 normal = cross(v1, v2);
-	cout << normal << endl;
 
 	glBegin(GL_POLYGON);
 	glNormal3f(normal.x, normal.y, normal.z);
