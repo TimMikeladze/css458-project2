@@ -414,7 +414,7 @@ void animate() {
 		eyeX = 3.66644, eyeY = 0.25, eyeZ = 0.770028, atX = -13.0049, atY =
 				0.25, atZ = 12.8985;
 		cameraRotation = 0;
-		slowFactor = 1;
+		slowFactor = 2;
 	}
 
 	if (bezCurvePt.x > 3) {
@@ -457,8 +457,8 @@ void initParams() {
 	rotation = 0;
 	cameraRotation = 0;
 	slowFactor = 5;
-	//eyeX = -1.13124, eyeY = 0.25, eyeZ = 2.15806, atX = -18.4284, atY = 0.25,
-	//	atZ = -9.05939;
+	eyeX = -1.13124, eyeY = 0.25, eyeZ = 2.15806, atX = -18.4284, atY = 0.25,
+		atZ = -9.05939;
 }
 
 void idle() {
