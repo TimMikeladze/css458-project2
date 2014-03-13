@@ -20,8 +20,8 @@ void animate();
 float frustumXY = 0.167;
 float frustumNear = 0.25;
 
-float eyeX = -9.46823, eyeY = 0.25, eyeZ = -0.576953, atX = 11.1201, atY = 0.25,
-		atZ = 0.489;
+float eyeX = -1.13124, eyeY = 0.25, eyeZ = 2.15806, atX = -18.4284, atY = 0.25,
+		atZ = -9.05939;
 
 int perspective = 1;
 
@@ -36,8 +36,11 @@ public:
 	GLfloat x, y, z;
 };
 
-wcPt3D ctrlPts[] =
-		{ { -8.86803, .05, -0.427709 }, { -7.61702, .05, -0.452285 }, {-5.55406, 0.25, -0.413929}};
+wcPt3D ctrlPts[] = { { -8.86803, .05, -0.427709 }, { -7.61702, .05, -0.452285 },
+		{ -5.55406, 0.05, -0.413929 }, { -5.55406, 0.05, 0.413929 }, { -4.22853,
+				0.05, 1.11623 }, { -3.22853, 0.05, 1.11623 },
+		{ -2.0, 0.05, 1.5 }, { -1.0, 0.05, 1.5 }, { 3.0, 0.05, 1.5 }, { 6.0,
+				0.05, 1.5 }, { 7.0, 0.05, 2.0 }, { 11.0, 0.05, 2.0 } };
 GLint *C;
 
 /*  Compute binomial coefficients C for given value of n.  */
@@ -363,34 +366,99 @@ void display(void) {
 	animate();
 }
 
+float rotation = 0;
+float slowFactor = 4.0;
+float angInc = 4; //2*3.14159/360;
+float angle = 0;
+float cameraRotation = 0;
+
 void animate() {
 	wcPt3D bezCurvePt;
 
 	computeBezPt(u, &bezCurvePt, nCtrlPts, ctrlPts, C);
 
 	glPushMatrix();
-
 	glTranslatef(bezCurvePt.x, bezCurvePt.y, bezCurvePt.z);
 	glScalef(.2, .2, .2);
-	//glRotatef(45, 0, 1, 0);
+
+	if (bezCurvePt.x > -5.8) {
+		rotation = -30;
+	}
+
+	//-4.22853, 0.05, 1.11623
+	if (bezCurvePt.x > -4) {
+		rotation = 0;
+	}
+
+	glRotatef(rotation, 0, 1, 0);
+
 	drawCar();
 	glPopMatrix();
 
-	glutSwapBuffers();
-
 	glLoadIdentity();
 
-	//gluLookAt(eyeX, eyeY, eyeZ, atX, atY, atZ, 0.0, 1.0, 0.0);
-	gluLookAt(bezCurvePt.x - 1, bezCurvePt.y + 0.25, bezCurvePt.z, 0, 0, 0, 0, 1, 0);
-}
+	if (bezCurvePt.x > -2) {
+		cameraRotation = 60;
 
-float slowFactor = 10.0;
-float angInc = 4; //2*3.14159/360;
-float angle = 0;
+	} else {
+		cameraRotation += 0.40;
+	}
+
+	if (bezCurvePt.x > -1) {
+		eyeX = 1.59258, eyeY = 0.25, eyeZ = 1.80393, atX = -18.0187, atY = 0.25, atZ =
+				-4.55452;
+		cameraRotation = 0;
+	}
+
+	if (bezCurvePt.x > 2) {
+		eyeX = 3.66644, eyeY = 0.25, eyeZ = 0.770028, atX = -13.0049, atY =
+				0.25, atZ = 12.8985;
+		cameraRotation = 0;
+		slowFactor = 1;
+	}
+
+	if (bezCurvePt.x > 3) {
+		eyeX = bezCurvePt.x - 1, eyeY = 0.25, eyeZ = bezCurvePt.z, atX = 70, atY =
+				0.25, atZ = 12.8985;
+		cameraRotation = 0;
+	}
+
+	if (bezCurvePt.x > 3) {
+		eyeX = bezCurvePt.x - 1, eyeY = 0.25, eyeZ = bezCurvePt.z, atX = 70, atY =
+				0.25, atZ = 12.8985;
+		cameraRotation = 0;
+	}
+
+	if (bezCurvePt.x > 6) {
+		cameraRotation = 0;
+		eyeX = 10.2604, eyeY = 0.25, eyeZ = 2.14196, atX = -10.3528, atY = 0.25, atZ =
+				1.79513;
+	}
+
+	glRotatef(cameraRotation, 0, 1, 0);
+	gluLookAt(eyeX, eyeY, eyeZ, atX, atY, atZ, 0.0, 1.0, 0.0);
+
+	/*
+	 std::cout << bezCurvePt.x;
+	 std::cout << ", ";
+	 std::cout << bezCurvePt.y;
+	 std::cout << ", ";
+	 std::cout << bezCurvePt.z;
+	 std::cout << "\n\n";
+	 */
+
+	glutSwapBuffers();
+
+}
 
 void initParams() {
 	angle = 0;
 	u = 0;
+	rotation = 0;
+	cameraRotation = 0;
+	slowFactor = 5;
+	//eyeX = -1.13124, eyeY = 0.25, eyeZ = 2.15806, atX = -18.4284, atY = 0.25,
+	//	atZ = -9.05939;
 }
 
 void idle() {
